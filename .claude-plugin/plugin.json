@@ -1,0 +1,12 @@
+{
+  "name": "tollpoint",
+  "version": "0.1.0",
+  "description": "Design-stage gates for agent work: capture an intent, harden a spec, write a plan, each argued by a read-only critic and approved in chat, then review the diff against the spec's acceptance criteria. Artifacts stay local in .tollpoint/.",
+  "author": {
+    "name": "lstod",
+    "email": "lstodd@protonmail.com"
+  },
+  "homepage": "https://github.com/lstod/Tollpoint",
+  "repository": "https://github.com/lstod/Tollpoint",
+  "license": "MIT"
+}
