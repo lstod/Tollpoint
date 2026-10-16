@@ -1,6 +1,6 @@
 # Tollpoint
 
-Tollpoint adds design-stage gates to agent work in Claude Code and Cursor. You capture an intent, harden it into a spec, and turn the spec into a plan. A read-only critic argues against each draft, and you approve each stage in chat. Once you've built the change, Tollpoint reviews the diff against the spec's acceptance criteria. Its working files stay local in `.tollpoint/`.
+Tollpoint adds design-stage gates to agent work in Claude Code and Cursor. You capture an intent, harden it into a spec, and turn the spec into a plan. A read-only critic argues against each draft, and you approve each stage in chat. Once you've built the change, Tollpoint reviews the diff against the spec's acceptance criteria. Its working files live in `.tollpoint/` and Tollpoint does not commit them.
 
 ## How it works
 
@@ -19,13 +19,13 @@ Each gate is decided by the person in chat, never by a skill or an agent:
 - **Gate 2:** you approve the spec.
 - **Gate 3:** you approve the plan.
 
-A stage writes nothing until the previous gate has passed. For example, running `tollpoint-spec` on an intent that is still `draft` writes no spec and tells you Gate 1 has not passed. After Gate 3, build however you like, then run `tollpoint-review`.
+Each of the three design stages writes nothing until the previous gate has passed. For example, running `tollpoint-spec` on an intent that is still `draft` writes no spec and tells you Gate 1 has not passed. After Gate 3, build however you like, then run `tollpoint-review`.
 
 ## Skills
 
 | Skill | Writes | What it does |
 |---|---|---|
-| [`tollpoint-intent`](skills/tollpoint-intent/SKILL.md) | `intent.md` | Captures an idea, a GitHub issue, or an incident note as an intent: what and why, not how. Adds the intent-critic's questions to a medium or high risk intent, or to any intent on request. Records Gate 1 when you accept or reject it in chat. |
+| [`tollpoint-intent`](skills/tollpoint-intent/SKILL.md) | `intent.md` | Captures an idea, a GitHub issue, or an incident note as an intent: what and why, not how. Adds the intent-critic's questions to a medium or high risk intent, or at any risk level on request. Records Gate 1 when you accept or reject it in chat. |
 | [`tollpoint-spec`](skills/tollpoint-spec/SKILL.md) | `spec.md` | Turns an accepted intent into a spec with numbered, testable acceptance criteria. Hardens it with the spec-critic and records the critique in the spec. Records Gate 2 when you approve it in chat. |
 | [`tollpoint-plan`](skills/tollpoint-plan/SKILL.md) | `plan.md` | Turns an approved spec into a plan: the files that change and ordered tasks, each tied to acceptance criteria and a verification, plus risks, proof, and rollback. Records Gate 3 when you approve it in chat. |
 | [`tollpoint-review`](skills/tollpoint-review/SKILL.md) | AC checklist in the PR body | Reviews the branch diff against the spec and plan with the code-reviewer. Writes an acceptance criteria checklist (met, unmet, or later) into the PR body, or prints it if there is no PR. |
