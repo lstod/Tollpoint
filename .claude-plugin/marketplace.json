@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "tollpoint",
+  "description": "Tollpoint: intent, spec, plan, and review gates for agent work.",
+  "owner": {
+    "name": "lstod",
+    "email": "lstodd@protonmail.com"
+  },
+  "plugins": [
+    {
+      "name": "tollpoint",
+      "description": "Design-stage gates for agent work: intent, spec, and plan with read-only critics, approved in chat, then a review against the spec's acceptance criteria.",
+      "source": "./"
+    }
+  ]
+}
